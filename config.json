@@ -1,0 +1,8 @@
+{
+  "defaultEnvironment": "local",
+  "local": {
+    "defaultRepository": "src",
+    "buildEngine": "dotnet",
+    "buildToolsPath": "C:\\Program Files\\Dotnet"
+  }
+}

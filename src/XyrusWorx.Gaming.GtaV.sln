@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XyrusWorx.Gaming.GtaV.SessionGuard", "app\XyrusWorx.Gaming.GtaV.SessionGuard\XyrusWorx.Gaming.GtaV.SessionGuard.csproj", "{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
