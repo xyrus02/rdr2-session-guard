@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace XyrusWorx.Gaming.GtaV.SessionGuard.Input 
+namespace XyrusWorx.Gaming.Rdr2.SessionGuard.Input 
 {
 	public class HotKeyEventArgs : EventArgs
 	{

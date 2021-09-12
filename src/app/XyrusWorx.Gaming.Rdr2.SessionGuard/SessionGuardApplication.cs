@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using NetFwTypeLib;
-using XyrusWorx.Gaming.GtaV.SessionGuard.Input;
+using XyrusWorx.Gaming.Rdr2.SessionGuard.Input;
 using XyrusWorx.Runtime;
 using XyrusWorx.Threading;
 
-namespace XyrusWorx.Gaming.GtaV.SessionGuard
+namespace XyrusWorx.Gaming.Rdr2.SessionGuard
 {
 	class SessionGuardApplication : ConsoleApplication
 	{
@@ -17,7 +17,7 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 		private int mPauseHotkey;
 
 		private bool mIsSessionLocked;
-		private Process mGtaProcess;
+		private Process mRdrProcess;
 
 		[DllImport("user32.dll")]
 		private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
@@ -64,8 +64,8 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 			
 			Console.WriteLine();
 			
-			Log.Write("Waiting for GTA V...");
-			DetectGtaProcess();
+			Log.Write("Waiting for RDR 2...");
+			DetectRdrProcess();
 			
 			while (!cancellationToken.IsCancellationRequested)
 			{
@@ -83,7 +83,7 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 
 				if (ctr > 0 && ctr % 20 == 0)
 				{
-					DetectGtaProcess();
+					DetectRdrProcess();
 					ctr = 0;
 				}
 			}
@@ -91,30 +91,30 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 			return Result.Success;
 		}
 
-		private void DetectGtaProcess()
+		private void DetectRdrProcess()
 		{
-			if (mGtaProcess != null)
+			if (mRdrProcess != null)
 			{
 				return;
 			}
 			
-			mGtaProcess = GetGtaProcess();
+			mRdrProcess = GetRdrProcess();
 
-			if (mGtaProcess != null)
+			if (mRdrProcess != null)
 			{
-				Log.Write($"Process found! PID: {mGtaProcess.Id}");
-				mGtaProcess.EnableRaisingEvents = true;
-				mGtaProcess.Exited += OnGtaProcessExit;
+				Log.Write($"Process found! PID: {mRdrProcess.Id}");
+				mRdrProcess.EnableRaisingEvents = true;
+				mRdrProcess.Exited += OnRdrProcessExit;
 			}
 		}
-		private Process GetGtaProcess() => Process.GetProcessesByName("GTA5").FirstOrDefault();
+		private Process GetRdrProcess() => Process.GetProcessesByName("RDR2").FirstOrDefault();
 		
 		private void ToggleSessionLock()
 		{
 			const string clsFwPolicy2 = "{E2B3C97F-6AE1-41AC-817A-F6F92166D7DD}";
 			const string clsFwRule = "{2C5BC43E-3369-4C33-AB0C-BE9469677AF4}";
 
-			const string ruleName = @"GTA_V_SESSION_LOCK";
+			const string ruleName = @"RDR2_SESSION_LOCK";
 			
 			var typeFwPolicy2 = Type.GetTypeFromCLSID(new Guid(clsFwPolicy2));
 			var typeFwRule = Type.GetTypeFromCLSID(new Guid(clsFwRule));
@@ -132,7 +132,7 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 						rule.Direction = NET_FW_RULE_DIRECTION_.NET_FW_RULE_DIR_OUT;
 						rule.Action = NET_FW_ACTION_.NET_FW_ACTION_BLOCK;
 						
-						rule.Description = "GTA V Session Lock";
+						rule.Description = "RDR2 Session Lock";
 						rule.LocalPorts = "6672,61455,61457,61456,61458";
 						rule.Grouping = "@firewallapi.dll,-23255";
 						
@@ -157,12 +157,12 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 			var op = new RelayOperation(
 				() =>
 				{
-					if (mGtaProcess == null)
+					if (mRdrProcess == null)
 					{
 						return;
 					}
 					
-					foreach (ProcessThread thread in mGtaProcess.Threads)
+					foreach (ProcessThread thread in mRdrProcess.Threads)
 					{
 						var threadHandle = IntPtr.Zero;
 						try
@@ -194,7 +194,7 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 					
 					Console.WriteLine();
 					
-					foreach (ProcessThread thread in mGtaProcess.Threads)
+					foreach (ProcessThread thread in mRdrProcess.Threads)
 					{
 						var threadHandle = IntPtr.Zero;
 						try
@@ -228,10 +228,10 @@ namespace XyrusWorx.Gaming.GtaV.SessionGuard
 			op.Run();
 		}
 		
-		private void OnGtaProcessExit(object sender, EventArgs e)
+		private void OnRdrProcessExit(object sender, EventArgs e)
 		{
 			Log.Write("Process terminated. Waiting for restart...");
-			mGtaProcess = null;
+			mRdrProcess = null;
 		}
 		private void OnHotkeyPressed(object sender, HotKeyEventArgs e)
 		{

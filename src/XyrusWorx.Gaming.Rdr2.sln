@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XyrusWorx.Gaming.GtaV.SessionGuard", "app\XyrusWorx.Gaming.GtaV.SessionGuard\XyrusWorx.Gaming.GtaV.SessionGuard.csproj", "{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XyrusWorx.Gaming.Rdr2.SessionGuard", "app\XyrusWorx.Gaming.Rdr2.SessionGuard\XyrusWorx.Gaming.Rdr2.SessionGuard.csproj", "{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

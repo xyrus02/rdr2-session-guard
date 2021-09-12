@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace XyrusWorx.Gaming.GtaV.SessionGuard.Input 
+namespace XyrusWorx.Gaming.Rdr2.SessionGuard.Input 
 {
 	public static class HotKeyManager
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace XyrusWorx.Gaming.GtaV.SessionGuard.Input 
+namespace XyrusWorx.Gaming.Rdr2.SessionGuard.Input 
 {
 	[Flags]
 	public enum KeyModifiers

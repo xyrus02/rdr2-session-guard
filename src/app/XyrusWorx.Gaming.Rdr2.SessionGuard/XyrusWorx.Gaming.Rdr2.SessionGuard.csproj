@@ -7,8 +7,8 @@
     <ProjectGuid>{3FFD10FF-0CA9-4C21-B70E-ED0BE729FCEC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XyrusWorx.Gaming.GtaV.SessionGuard</RootNamespace>
-    <AssemblyName>gtavsg</AssemblyName>
+    <RootNamespace>XyrusWorx.Gaming.Rdr2.SessionGuard</RootNamespace>
+    <AssemblyName>rdr2sg</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <LangVersion>7.1</LangVersion>
